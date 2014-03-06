@@ -1,0 +1,23 @@
+{% extends 'requirements_tracker/base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body_block %}
+
+<!-- Register code goes here - not sure if this form style will work - might need to use built in form
+    Update: Trying to use built in form.
+-->
+{% if registered %}
+    Thank you for registering!
+{% else %}
+    <form id="registrationform" method="post" action="requirements_tracker/register/">
+
+        {% csrf_token %}
+
+         <!-- Display form. -->
+        {{ user_form.as_p }}
+
+        <button type="submit" class="btn btn-primary" value="submit">Register!</button>
+    </form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'requirements_tracker/base.html' %}
+
+{% block title %}{{ user.first_name }} {{ user.last_name }}{% endblock %}
+
+{% block body_block %}
+
+<h2> Your details </h2>	
+<h3> Name: {{ user.first_name }}</h3>
+<h3> Surname: {{ user.last_name }}</h3>
+<h3> Email: {{ user.email }}</h3>
+<h3> Username: {{ user.username }}</h3>
+
+<h2>Your projects</h2>
+<ul>
+{% for project in user_projects %}
+	<li><a href="/requirements_tracker/project/{{ project.project_name_url }}">{{ project.title }}</a></li>
+{% endfor %}
+</ul>
+
+
+
+
+{% endblock %}

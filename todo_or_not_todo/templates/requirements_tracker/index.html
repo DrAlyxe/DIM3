@@ -1,0 +1,59 @@
+{% extends 'requirements_tracker/base.html' %}
+
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+<!--{% block css %} <link> {% endblock %}-->
+<link href="{% static "css/jumbotron.css" %}" rel="stylesheet">
+
+{% block body_block %}
+
+<!-- Landing page code goes here -->
+	{% if not user.is_authenticated %}
+      <div class="jumbotron">
+        <h1>T0D0 || !T0D0</h1>
+        <p class="lead">A fast, simple requirements tracker suitable for projects of any flavour.</p>
+        <p><a class="btn btn-lg btn-success" href="/requirements_tracker/login" role="button">Sign in</a></p>
+      </div>
+	{% endif %}
+      <div class="row marketing">
+
+<!-- All projects in system -->
+          <div class="col-lg-3">
+          <h3>All projects in system</h3>
+          <ol>
+      	  {% for project in all_projects %}
+            <li><a href="/requirements_tracker/project/{{ project.project_name_url }}/">
+            	 {{ project.title }}
+            	</a>
+            </li>
+          {% endfor %}
+          </ol>
+       	  </div>
+      	
+        <div class="col-lg-4">
+          <h4>Easy</h4>
+          <p>Simple to use.</p>
+
+          <h4>Fast</h4>
+          <p>Quick to set up.</p>
+
+          <h4>Powerful</h4>
+          <p>Keep track of all your requirements.</p>
+        </div>
+
+        <div class="col-lg-4">
+          <h4>Collaborate</h4>
+          <p>Add others to your projects quickly and simply.</p>
+
+          <h4>Access</h4>
+          <p>Access from any computer.</p>
+
+          <h4>Personalise</h4>
+          <p>Prioritise the way you want.</p>
+        </div>
+        </div>
+
+
+{% endblock %}

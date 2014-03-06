@@ -1,0 +1,25 @@
+{% extends 'requirements_tracker/base.html' %}
+
+{% block title %}{{ project_name }}{% endblock %}
+
+{% block body_block %}
+
+<h1>Editing {{ project_name }} project</h1>
+
+<form method="post" action="/requirements_tracker/project/{{ project_name_url }}/edit/">
+  {% csrf_token %}
+  
+  {% for hidden in form.hidden_fields %}
+	{{ hidden }}
+  {% endfor %}
+
+	{% for field in form.visible_fields %}
+		{{ field.errors }}
+	    {{ field.help_text}}
+    	{{ field }}
+	{% endfor %}
+   <br></br>
+   <button type="submit" class="btn btn-success">Submit</button>
+  
+</form>
+{% endblock %}

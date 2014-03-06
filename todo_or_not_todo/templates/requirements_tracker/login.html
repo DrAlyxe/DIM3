@@ -1,0 +1,21 @@
+{% extends 'requirements_tracker/base.html' %}
+
+{% block title %}Sign in{% endblock %}
+
+{% block body_block %}
+
+    <form id="login_form" method="post" action="/requirements_tracker/login/">
+        {% csrf_token %}
+        <p>
+            <label for="id_username">Username:</label>
+            <input id="id_username" type="text" name="username" size="50" />
+        </p>
+        <p>
+        <label for="id_password">Password:</label>
+        <input id="id_password" type="password" name="password" size="50" />
+        </p>
+
+        <button type="submit" class="btn btn-success" value="Sign in">Sign in</button>
+    </form>
+
+{% endblock %}

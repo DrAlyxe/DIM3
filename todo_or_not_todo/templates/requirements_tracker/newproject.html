@@ -1,0 +1,30 @@
+{% extends 'requirements_tracker/base.html' %}
+
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block css %}<link href="{% static "css/newproject.css" %}" rel="stylesheet">{% endblock %}
+
+{% block body_block %}
+
+<!-- New project view code goes here -->
+<div class="container" id="central">
+	<form role="form" method="post" action="/requirements_tracker/new_project/">
+	  {% csrf_token %}
+	  
+	  {% for hidden in form.hidden_fields %}
+	                {{ hidden }}
+	            {% endfor %}
+
+	            {% for field in form.visible_fields %}
+	                {{ field.errors }}
+	                {{ field.help_text}}
+	                {{ field }}
+		<br></br>
+	            {% endfor %}
+	   <button type="submit" class="btn btn-success">Submit</button>
+	  
+	</form>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'requirements_tracker/base.html' %}
+
+{% block title %}{{ project_name }}{% endblock %}
+
+{% block body_block %}
+	<h1>{{ project_name }} project</h1>
+	<h2>Tasks</h2>
+	<ul>
+		{% for task in tasks %}
+			<li>
+				<div class="priority{{ task.priority }}">
+					<div>{{ task.title }}</div>
+					<div>{{ task.description }}</div>
+					<div>{{ task.due_date }}</div>
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+	<h2>Collaborators</h2>
+	<ul>
+		{% for user in collaborators %}
+			<li>{{ user }}</li>
+		{% endfor %}
+	</ul>
+	<a href="add_task/">Add task to this project</a><br/>
+	<a href="edit/">Edit project</a>
+{% endblock %}

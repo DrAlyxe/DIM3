@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico"> <!-- Choose an icon and put link here -->
+
+    <title>T0DO || !T0D0 - {% block title %}Welcome Page{% endblock %}</title>
+
+    <!-- Bootstrap core CSS - online copy -->
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+    <!-- Local css file -->
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+    <!--<link href="{% static "css/style.css" %}" rel="stylesheet">-->
+    {% block css %}{% endblock %}
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/requirements_tracker/">T0D0 || !T0D0</a>
+        </div>
+        {% if not user.is_authenticated %}
+        <div class="navbar-collapse collapse">
+            <div class="btn-group navbar-right">
+                <a href="/requirements_tracker/login/" class="btn btn-success navbar-btn">
+                    Sign in
+                </a>
+                <a href="/requirements_tracker/register/" class="btn btn-primary navbar-btn">
+                    Register
+                </a>
+            </div>
+        </div><!--/.navbar-collapse -->
+        {% else %}
+        <div class="navbar-collapse collapse">
+			<a href="/requirements_tracker/profile" class="btn btn-primary navbar-btn navbar-left">
+                Profile
+            </a>
+            <a href="/requirements_tracker/new_project/" class="btn btn-primary navbar-btn navbar-left">
+                Add Project
+            </a>
+			<a href="/requirements_tracker/my_tasks" class="btn btn-primary navbar-btn navbar-left">
+                My Tasks
+            </a>
+            <a href="/requirements_tracker/logout/" class="btn btn-danger navbar-btn navbar-right">
+                Sign out, {{ user.first_name }}
+            </a>
+        </div><!--/.navbar-collapse -->
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="container">
+		{% block body_block %}This is the base page.{% endblock %}
+	   </div>
+
+      <footer class="container">
+        <p>&copy; Team R 2014</p>
+      </footer>
+    </div> <!-- /container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    {% block javascript %}{% endblock %}
+	</body>
+</html>

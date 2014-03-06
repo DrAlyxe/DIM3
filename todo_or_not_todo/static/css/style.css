@@ -1,0 +1,20 @@
+body {
+    padding-top: 70px; /* http://getbootstrap.com/components/#navbar-fixed-top */
+    padding-bottom: 20px;
+}
+
+.priority1 {
+		background: red;
+}
+
+.priority2 {
+	background: orange;
+}
+
+.priority3 {
+	background: yellow;
+}
+
+.priority4 {
+	background: green;
+}
